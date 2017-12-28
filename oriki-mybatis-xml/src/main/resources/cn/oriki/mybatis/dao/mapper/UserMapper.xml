@@ -78,4 +78,28 @@
               #{createTime});
     </insert>
 
+    <insert id="saveUserReturnIdBySelectKey">
+        INSERT INTO `db_mybatis`.`t_user`
+            (`id`,
+            `username`,
+            `password`,
+            `email`,
+            `info`,
+            `img`,
+            `create_time`)
+        VALUES
+            (null,
+            #{username},
+            #{password},
+            #{email},
+            #{info},
+            #{img},
+            #{createTime});
+
+        <selectKey keyColumn="id" keyProperty="id" resultType="java.lang.Integer" order="AFTER">
+            select last_insert_id();
+        </selectKey>
+    </insert>
+
+
 </mapper>

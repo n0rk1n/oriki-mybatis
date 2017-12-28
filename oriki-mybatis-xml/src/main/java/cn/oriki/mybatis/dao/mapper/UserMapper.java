@@ -45,4 +45,12 @@ public interface UserMapper {
      * @return
      */
     public Integer saveUserReturnId(User user);
+
+    /**
+     * 使用selectKey返回主键
+     *
+     * @param user
+     * @return
+     */
+    public Integer saveUserReturnIdBySelectKey(User user);
 }
