@@ -131,4 +131,23 @@ public class MyBatisTest {
         sqlSession.close();
     }
 
+    @Test
+    public void test8() {
+        SqlSession sqlSession = SqlSessionUtils.getSqlSession();
+        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+
+        User user = userMapper.queryById(1);
+
+        Integer number = userMapper.deleteUserById(user.getId());
+
+        System.out.println("影响行数：" + number);
+
+        //不影响数据库，我们进行回滚
+        sqlSession.rollback();
+        // 默认SqlSession获取的事务是不自动提交的，我们需要手动提交
+        // sqlSession.commit();
+
+        sqlSession.close();
+    }
+
 }
