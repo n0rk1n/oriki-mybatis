@@ -9,6 +9,15 @@ public class Role implements Serializable {
     private Integer enabled;
     private Integer createBy;
     private Date createTime;
+    private User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User users) {
+        this.user = users;
+    }
 
     public Integer getId() {
         return id;

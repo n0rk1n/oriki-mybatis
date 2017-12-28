@@ -4,4 +4,24 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.oriki.mybatis.dao.mapper.UserMapper">
 
+    <select id="queryRolesByUserId" resultType="cn.oriki.mybatis.domain.Role">
+          select
+            r.id ,
+            r.name ,
+            r.enabled ,
+            r.create_by ,
+            r.create_time ,
+            u.id as 'user.id' ,
+            u.username as 'user.username' ,
+            u.password as 'user.password' ,
+            u.email as 'user.email',
+            u.info as 'user.info' ,
+            u.img as 'user.img' ,
+            u.create_time as 'user.create_time'
+          from t_user u
+          inner join t_user_role ur on u.id=ur.user_id
+          inner join t_role r on r.id=ur.role_id
+          where u.id=#{id}
+    </select>
+
 </mapper>
