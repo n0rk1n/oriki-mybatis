@@ -4,4 +4,17 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.oriki.mybatis.dao.mapper.UserMapper">
 
+    <resultMap id="userMap" type="cn.oriki.mybatis.domain.User">
+        <id property="id" column="id"></id>
+        <result property="username" column="username"></result>
+        <result property="password" column="password"></result>
+        <result property="email" column="email"></result>
+        <result property="info" column="info"></result>
+        <result property="img" column="img" jdbcType="BLOB"></result>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"></result>
+    </resultMap>
+
+    <select id="queryById" resultMap="userMap">
+        select * from t_user where id = #{id};
+    </select>
 </mapper>
