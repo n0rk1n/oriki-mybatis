@@ -1,5 +1,6 @@
 package cn.oriki.mybatis.dao.mapper;
 
+import cn.oriki.mybatis.domain.Role;
 import cn.oriki.mybatis.domain.User;
 
 import java.util.List;
@@ -17,7 +18,15 @@ public interface UserMapper {
     /**
      * 查询所有用户的方法
      *
-     * @return  
+     * @return
      */
     public List<User> queryAll();
+
+    /**
+     * 根据用户id查询用户角色信息
+     *
+     * @param id
+     * @return
+     */
+    public List<Role> queryRolesByUserId(Integer id);
 }
