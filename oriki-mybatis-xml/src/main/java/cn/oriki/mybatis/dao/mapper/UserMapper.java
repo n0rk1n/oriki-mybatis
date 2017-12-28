@@ -53,4 +53,13 @@ public interface UserMapper {
      * @return
      */
     public Integer saveUserReturnIdBySelectKey(User user);
+
+    /**
+     * 根据id更新用户
+     *
+     * @param user
+     * @return
+     */
+    public Integer updateUserById(User user);
+
 }

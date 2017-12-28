@@ -101,5 +101,18 @@
         </selectKey>
     </insert>
 
+    <update id="updateUserById">
+        UPDATE `db_mybatis`.`t_user`
+        SET
+        `username` = #{username} ,
+        `password` = #{password} ,
+        `email` = #{email} ,
+        `info` = #{info} ,
+        `img` = #{img} ,
+        `create_time` = #{createTime}
+        WHERE
+        `id` = #{id};
+    </update>
+
 
 </mapper>
