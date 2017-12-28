@@ -6,6 +6,8 @@ import cn.oriki.mybatis.utils.SqlSessionUtils;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
 
+import java.util.List;
+
 public class MyBatisTest {
     @Test
     public void test() {
@@ -15,5 +17,17 @@ public class MyBatisTest {
         User user = userMapper.queryById(1);
 
         System.out.println(user);
+    }
+
+    @Test
+    public void test2() {
+        SqlSession sqlSession = SqlSessionUtils.getSqlSession();
+        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+
+        List<User> users = userMapper.queryAll();
+
+        for (User user : users) {
+            System.out.println(user);
+        }
     }
 }

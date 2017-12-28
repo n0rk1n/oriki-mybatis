@@ -17,4 +17,17 @@
     <select id="queryById" resultMap="userMap">
         select * from t_user where id = #{id};
     </select>
+
+    <select id="queryAll" resultType="cn.oriki.mybatis.domain.User">
+        select
+            id as id ,
+            username as username ,
+            password as password ,
+            email as email ,
+            info as info ,
+            img as img ,
+            create_time as createTime
+        from t_user;
+    </select>
+
 </mapper>

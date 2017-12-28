@@ -2,6 +2,8 @@ package cn.oriki.mybatis.dao.mapper;
 
 import cn.oriki.mybatis.domain.User;
 
+import java.util.List;
+
 public interface UserMapper {
 
     /**
@@ -11,4 +13,11 @@ public interface UserMapper {
      * @return
      */
     public User queryById(Integer id);
+
+    /**
+     * 查询所有用户的方法
+     *
+     * @return  
+     */
+    public List<User> queryAll();
 }
