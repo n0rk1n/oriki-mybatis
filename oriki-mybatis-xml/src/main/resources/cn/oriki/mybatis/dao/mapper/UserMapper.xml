@@ -20,13 +20,13 @@
 
     <select id="queryAll" resultType="cn.oriki.mybatis.domain.User">
         select
-            id as id ,
-            username as username ,
-            password as password ,
-            email as email ,
-            info as info ,
-            img as img ,
-            create_time as createTime
+            id ,
+            username ,
+            password ,
+            email ,
+            info ,
+            img ,
+            create_time
         from t_user;
     </select>
 
