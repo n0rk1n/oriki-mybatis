@@ -59,5 +59,23 @@
               #{createTime});
     </insert>
 
+    <insert id="saveUserReturnId" parameterType="cn.oriki.mybatis.domain.User" useGeneratedKeys="true" keyProperty="id">
+          INSERT INTO `db_mybatis`.`t_user`
+              (`id`,
+              `username`,
+              `password`,
+              `email`,
+              `info`,
+              `img`,
+              `create_time`)
+          VALUES
+              (null,
+              #{username},
+              #{password},
+              #{email},
+              #{info},
+              #{img},
+              #{createTime});
+    </insert>
 
 </mapper>

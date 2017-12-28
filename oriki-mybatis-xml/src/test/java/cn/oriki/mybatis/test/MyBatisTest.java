@@ -68,5 +68,25 @@ public class MyBatisTest {
         sqlSession.close();
     }
 
+    @Test
+    public void test5() {
+        SqlSession sqlSession = SqlSessionUtils.getSqlSession();
+        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+
+        User user = new User(null, "zhangsan", "123456", "abcd@oriki.cn", "描述", new Byte[0], new Date());
+
+        Integer number = userMapper.saveUserReturnId(user);
+
+        System.out.println("影响行数：" + number);
+
+        System.out.println("获取用户添加后的主键：" + user.getId());
+
+        //不影响数据库，我们进行回滚
+        sqlSession.rollback();
+        // 默认SqlSession获取的事务是不自动提交的，我们需要手动提交
+        // sqlSession.commit();
+
+        sqlSession.close();
+    }
 
 }

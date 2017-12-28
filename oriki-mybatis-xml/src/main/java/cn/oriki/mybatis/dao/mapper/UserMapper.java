@@ -37,4 +37,12 @@ public interface UserMapper {
      * @return
      */
     public Integer saveUser(User user);
+
+    /**
+     * 新增用户并返回主键
+     *
+     * @param user
+     * @return
+     */
+    public Integer saveUserReturnId(User user);
 }
