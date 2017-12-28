@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!--官网复制内容-->
+<configuration>
+    <settings>
+        <setting name="logImpl" value="LOG4J"/>
+    </settings>
+    <typeAliases>
+        <package name="cn.oriki.mybatis.domain"/>
+    </typeAliases>
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/db_mybatis"/>
+                <property name="username" value="root"/>
+                <property name="password" value="4869"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <!--<mappers>
+        <mapper resource="cn/oriki/mybatis/dao/mapper/PermissionMapper.xml"></mapper>
+        <mapper resource="cn/oriki/mybatis/dao/mapper/RoleMapper.xml"></mapper>
+        <mapper resource="cn/oriki/mybatis/dao/mapper/RolePermissionMapper.xml"></mapper>
+        <mapper resource="cn/oriki/mybatis/dao/mapper/UserMapper.xml"></mapper>
+        <mapper resource="cn/oriki/mybatis/dao/mapper/UserRoleMapper.xml"></mapper>
+    </mappers>-->
+
+    <mappers>
+        <package name="cn.oriki.mybatis.dao.mapper"></package>
+    </mappers>
+</configuration>
