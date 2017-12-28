@@ -29,4 +29,12 @@ public interface UserMapper {
      * @return
      */
     public List<Role> queryRolesByUserId(Integer id);
+
+    /**
+     * 新增用户
+     *
+     * @param user
+     * @return
+     */
+    public Integer saveUser(User user);
 }

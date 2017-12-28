@@ -40,4 +40,24 @@
           where u.id = #{id} ;
     </select>
 
+    <insert id="saveUser" parameterType="cn.oriki.mybatis.domain.User">
+          INSERT INTO `db_mybatis`.`t_user`
+              (`id`,
+              `username`,
+              `password`,
+              `email`,
+              `info`,
+              `img`,
+              `create_time`)
+          VALUES
+              (#{id},
+              #{username},
+              #{password},
+              #{email},
+              #{info},
+              #{img},
+              #{createTime});
+    </insert>
+
+
 </mapper>
