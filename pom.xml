@@ -19,6 +19,7 @@
         <module>oriki-mybatis-search</module>
         <module>oriki-mybatis-search2</module>
         <module>oriki-mybatis-cache</module>
+        <module>oriki-mybatis-pagehelper</module>
     </modules>
 
 
