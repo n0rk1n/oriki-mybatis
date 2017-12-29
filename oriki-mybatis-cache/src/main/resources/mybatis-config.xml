@@ -6,6 +6,8 @@
 <configuration>
     <settings>
         <setting name="logImpl" value="LOG4J"/>
+        <!--配置二级缓存-->
+        <setting name="cacheEnabled" value="true"/>
     </settings>
     <typeAliases>
         <package name="cn.oriki.mybatis.domain"/>

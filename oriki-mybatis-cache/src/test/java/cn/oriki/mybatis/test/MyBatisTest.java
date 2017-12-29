@@ -52,4 +52,46 @@ public class MyBatisTest {
 //    DEBUG[main]-Resetting autocommit to true on JDBC Connection [com.mysql.jdbc.JDBC4Connection@6a1aab78]
 //    DEBUG[main]-Closing JDBC Connection [com.mysql.jdbc.JDBC4Connection@6a1aab78]
 //    DEBUG[main]-Returned connection 1780132728 to pool.
+
+    @Test
+    public void test2() throws IOException {
+        String resource = "mybatis-config.xml";
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+        inputStream.close();
+
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+
+        List<Country> lists = sqlSession.selectList("countryMapper.queryAll");
+
+        for (Country country : lists) {
+            System.out.println(country.toString());
+        }
+        sqlSession.close();
+        SqlSession sqlSession2 = sqlSessionFactory.openSession();
+        List<Country> lists2 = sqlSession2.selectList("countryMapper.queryAll");
+
+        for (Country country : lists2) {
+            System.out.println(country.toString());
+        }
+
+        sqlSession2.close();
+    }
+//    DEBUG[main]-Created connection 1136497418.
+//    DEBUG[main]-Setting autocommit to false on JDBC Connection [com.mysql.jdbc.JDBC4Connection@43bd930a]
+//    DEBUG[main]-==>  Preparing: select * from t_country;
+//    DEBUG[main]-==> Parameters:
+//    DEBUG[main]-<==      Total: 4
+//    Country{id=1, name='中国', code='CN'}
+//    Country{id=2, name='美国', code='US'}
+//    Country{id=3, name='英国', code='GB'}
+//    Country{id=4, name='法国', code='FR'}
+//    DEBUG[main]-Resetting autocommit to true on JDBC Connection [com.mysql.jdbc.JDBC4Connection@43bd930a]
+//    DEBUG[main]-Closing JDBC Connection [com.mysql.jdbc.JDBC4Connection@43bd930a]
+//    DEBUG[main]-Returned connection 1136497418 to pool.
+//    DEBUG[main]-Cache Hit Ratio [countryMapper]: 0.5
+//    Country{id=1, name='中国', code='CN'}
+//    Country{id=2, name='美国', code='US'}
+//    Country{id=3, name='英国', code='GB'}
+//    Country{id=4, name='法国', code='FR'}
 }
