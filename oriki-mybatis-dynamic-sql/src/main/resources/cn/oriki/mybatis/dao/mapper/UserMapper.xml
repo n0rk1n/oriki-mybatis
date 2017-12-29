@@ -45,5 +45,24 @@
         `id` = #{id};
     </update>
 
+    <select id="queryByIdOrUsername" resultType="cn.oriki.mybatis.domain.User">
+        select id , username , password , email , info , img , create_time
+        from t_user
+        <where>
+            <choose>
+                <when test="id != null and id != ''">
+                    and id = #{id}
+                </when>
+                <when test="username != null and username != ''">
+                    and username = #{username}
+                </when>
+                <otherwise>
+                    1 = 2
+                </otherwise>
+            </choose>
+        </where>
+        ;
+    </select>
+
 
 </mapper>

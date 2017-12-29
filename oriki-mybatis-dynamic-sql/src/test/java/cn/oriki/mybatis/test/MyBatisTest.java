@@ -9,7 +9,7 @@ import org.junit.Test;
 import java.util.List;
 
 public class MyBatisTest {
-    
+
     @Test
     public void test() {
         SqlSession sqlSession = SqlSessionUtils.getSqlSession();
@@ -42,6 +42,22 @@ public class MyBatisTest {
         userMapper.updateByIdSelective(user);
 
         sqlSession.rollback();
+
+        sqlSession.close();
+    }
+
+    @Test
+    public void test3() {
+        SqlSession sqlSession = SqlSessionUtils.getSqlSession();
+        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+
+
+        User user = new User();
+        user.setId(1);
+        user.setUsername("admin");
+
+        User existUser = userMapper.queryByIdOrUsername(user);
+        System.out.println(existUser);
 
         sqlSession.close();
     }

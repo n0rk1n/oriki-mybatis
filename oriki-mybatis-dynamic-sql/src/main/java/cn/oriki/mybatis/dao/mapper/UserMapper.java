@@ -24,4 +24,11 @@ public interface UserMapper {
      */
     public Integer updateByIdSelective(User user);
 
+    /**
+     * 根据id或者用户名查询
+     *
+     * @return
+     */
+    public User queryByIdOrUsername(User user);
+
 }
