@@ -1,10 +1,7 @@
 package cn.oriki.mybatis.dao.mapper;
 
 import cn.oriki.mybatis.domain.Role;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.ResultMap;
-import org.apache.ibatis.annotations.Results;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -36,4 +33,14 @@ public interface RoleMapper {
     @ResultMap(value = "roleMap")
     @Select(value = {"select id , name , enabled , create_by , create_time from t_role "})
     public List<Role> queryAll();
+
+    /**
+     * 保存角色
+     *
+     * @param role
+     * @return
+     */
+    @Insert(value = "insert into t_role values (null , #{name} , #{enabled} , #{createBy} , now());")
+    public Integer saveRole(Role role);
+
 }

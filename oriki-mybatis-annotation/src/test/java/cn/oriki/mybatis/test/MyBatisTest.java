@@ -47,6 +47,19 @@ public class MyBatisTest {
 
         sqlSession.close();
     }
+
+    @Test
+    public void test4() {
+        SqlSession sqlSession = SqlSessionUtils.getSqlSession();
+        RoleMapper roleMapper = sqlSession.getMapper(RoleMapper.class);
+
+        Role role = new Role(null, "角色", 1, 1, null);
+        roleMapper.saveRole(role);
+
+        System.out.println("获取主键id：" + role.getId());
+
+        sqlSession.rollback();
+
+        sqlSession.close();
+    }
 }
-
-
