@@ -20,4 +20,15 @@ public class MyBatisTest {
         sqlSession.close();
     }
 
+    @Test
+    public void test2() {
+        SqlSession sqlSession = SqlSessionUtils.getSqlSession();
+        RoleMapper roleMapper = sqlSession.getMapper(RoleMapper.class);
+
+        Role role = roleMapper.queryById2(1);
+
+        System.out.println(role);
+
+        sqlSession.close();
+    }
 }
