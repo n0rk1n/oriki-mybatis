@@ -80,5 +80,31 @@ public class MyBatisTest {
         sqlSession.close();
     }
 
+    @Test
+    public void test4() throws IOException {
+        String resource = "mybatis-config.xml";
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+
+        RoleMapper roleMapper = sqlSession.getMapper(RoleMapper.class);
+
+        Role role = roleMapper.queryByIdEx(1);
+
+        System.out.println(role);
+
+        List<Permission> permissions = role.getPermissions();
+
+        if (permissions != null) {
+            for (Permission permission : permissions) {
+                System.out.println(permission);
+            }
+        }
+
+
+        sqlSession.close();
+    }
+
 
 }
