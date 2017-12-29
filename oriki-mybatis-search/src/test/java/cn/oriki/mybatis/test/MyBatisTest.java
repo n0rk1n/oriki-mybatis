@@ -1,6 +1,7 @@
 package cn.oriki.mybatis.test;
 
 import cn.oriki.mybatis.dao.mapper.PersonMapper;
+import cn.oriki.mybatis.domain.IdentityCard;
 import cn.oriki.mybatis.domain.Person;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -28,6 +29,45 @@ public class MyBatisTest {
         for (Person person : people) {
             System.out.println(person);
         }
+
+        sqlSession.close();
+    }
+
+    @Test
+    public void test2() throws IOException {
+        InputStream inputStream = Resources.getResourceAsStream("mybatis-config.xml");
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+
+
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+
+        PersonMapper personMapper = sqlSession.getMapper(PersonMapper.class);
+
+        Person person = personMapper.queryPersonAndIdentityCardInfoByPersonId(1);
+
+        System.out.println(person);
+        IdentityCard identityCard = person.getIdentityCard();
+        System.out.println(identityCard);
+
+        sqlSession.close();
+    }
+
+
+    @Test
+    public void test3() throws IOException {
+        InputStream inputStream = Resources.getResourceAsStream("mybatis-config.xml");
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+
+
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+
+        PersonMapper personMapper = sqlSession.getMapper(PersonMapper.class);
+
+        Person person = personMapper.queryPersonAndIdentityCardInfoByPersonId2(1);
+
+        System.out.println(person);
+        IdentityCard identityCard = person.getIdentityCard();
+        System.out.println(identityCard);
 
         sqlSession.close();
     }

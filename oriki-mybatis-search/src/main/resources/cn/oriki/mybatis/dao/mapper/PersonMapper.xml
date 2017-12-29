@@ -6,4 +6,36 @@
     <select id="queryAll" resultType="cn.oriki.mybatis.domain.Person">
             select * from t_person ;
           </select>
+
+    <select id="queryPersonAndIdentityCardInfoByPersonId" resultType="cn.oriki.mybatis.domain.Person">
+          select
+            p.id ,
+            p.name ,
+            i.id as `identityCard.id` ,
+            i.id_number as `identityCard.idNumber`
+          from t_person p inner join t_identity_card i ON i.id = p.id
+          where
+            p.id=#{id}
+    </select>
+
+    <resultMap id="personMap" type="cn.oriki.mybatis.domain.Person">
+        <id column="id" property="id"></id>
+        <result column="name" property="name"></result>
+        <association property="identityCard" javaType="cn.oriki.mybatis.domain.IdentityCard">
+            <id column="id" property="id"></id>
+            <result column="id_number" property="idNumber"></result>
+        </association>
+    </resultMap>
+
+    <select id="queryPersonAndIdentityCardInfoByPersonId2" resultMap="personMap">
+          select
+            p.id ,
+            p.name ,
+            i.id ,
+            i.id_number
+          from t_person p inner join t_identity_card i ON i.id = p.id
+          where
+            p.id=#{id}
+    </select>
+
 </mapper>
