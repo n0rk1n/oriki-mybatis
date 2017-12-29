@@ -11,4 +11,13 @@ public interface UserMapper {
      * @return
      */
     public User queryById(Integer id);
+
+    /**
+     * 根据id查询用户，并查询出他的所有角色
+     *
+     * @param id
+     * @return
+     */
+    public User queryWithRoleById(Integer id);
+
 }

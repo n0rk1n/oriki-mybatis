@@ -7,4 +7,45 @@
     <select id="queryById" resultType="cn.oriki.mybatis.domain.User">
            select * from t_user where id = #{id};
           </select>
+
+    <resultMap id="userRoleMap" type="cn.oriki.mybatis.domain.User">
+        <id column="id" property="id"></id>
+        <result property="username" column="username"></result>
+        <result property="password" column="password"></result>
+        <result property="info" column="info"></result>
+        <result property="email" column="email"></result>
+        <result property="img" column="img"></result>
+        <result property="createTime" column="create_time"></result>
+        <collection property="roles" ofType="cn.oriki.mybatis.domain.Role" columnPrefix="roles.">
+            <id column="id" property="id"></id>
+            <result property="name" column="name"></result>
+            <result property="enabled" column="enabled"></result>
+            <result property="createBy" column="create_by"></result>
+            <result property="createTime" column="create_time"></result>
+        </collection>
+
+    </resultMap>
+
+    <select id="queryWithRoleById" resultMap="userRoleMap">
+          select
+        u.id ,u.username ,
+        u.password ,
+        u.email ,
+        u.info ,
+        u.img ,
+        u.create_time ,
+        r.id as `roles.id` ,
+        r.name as `roles.name`,
+        r.enabled as `roles.enabled`,
+        r.create_by as `roles.create_by`,
+        r.create_time as `roles.create_time`
+          from
+           t_user u
+           inner join
+            t_user_role ur on u.id = ur.user_id
+           inner join
+            t_role r on ur.role_id = r.id
+          where u.id = 1;
+    </select>
+
 </mapper>

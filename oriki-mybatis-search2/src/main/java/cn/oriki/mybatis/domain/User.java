@@ -1,6 +1,5 @@
 package cn.oriki.mybatis.domain;
 
-import javax.management.relation.Role;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Date;
