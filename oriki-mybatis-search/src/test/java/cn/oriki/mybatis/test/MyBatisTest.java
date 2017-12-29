@@ -72,4 +72,23 @@ public class MyBatisTest {
         sqlSession.close();
     }
 
+    @Test
+    public void test4() throws IOException {
+        InputStream inputStream = Resources.getResourceAsStream("mybatis-config.xml");
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+		
+
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+
+        PersonMapper personMapper = sqlSession.getMapper(PersonMapper.class);
+
+        Person person = personMapper.queryPersonAndIdentityCardInfoByPersonId3(1);
+
+        System.out.println(person);
+        IdentityCard identityCard = person.getIdentityCard();
+        System.out.println(identityCard);
+
+        sqlSession.close();
+    }
+
 }

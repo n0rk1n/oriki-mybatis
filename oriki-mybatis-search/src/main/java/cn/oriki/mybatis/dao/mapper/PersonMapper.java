@@ -29,4 +29,12 @@ public interface PersonMapper {
      */
     public Person queryPersonAndIdentityCardInfoByPersonId2(Integer id);
 
+    /**
+     * 根据id查询个人信息和身份证信息
+     *
+     * @param id
+     * @return
+     */
+    public Person queryPersonAndIdentityCardInfoByPersonId3(Integer id);
+
 }

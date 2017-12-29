@@ -38,4 +38,23 @@
             p.id=#{id}
     </select>
 
+    <resultMap id="personIdentityMap" type="cn.oriki.mybatis.domain.Person">
+        <id column="id" property="id"></id>
+        <result property="name" column="name"></result>
+
+        <association property="identityCard" column="{id = id}"
+                     select="cn.oriki.mybatis.dao.mapper.IdentityCardMapper.queryById"></association>
+    </resultMap>
+
+    <select id="queryPersonAndIdentityCardInfoByPersonId3" resultMap="personIdentityMap">
+          select
+            p.id ,
+            p.name ,
+            i.id ,
+            i.id_number
+          from t_person p inner join t_identity_card i ON i.id = p.id
+          where
+            p.id=#{id};
+    </select>
+
 </mapper>

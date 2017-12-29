@@ -3,5 +3,8 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.oriki.mybatis.dao.mapper.IdentityCardMapper">
+    <select id="queryById" resultType="cn.oriki.mybatis.domain.IdentityCard">
+          select id ,id_number from t_identity_card where id = #{id};
+    </select>
 
 </mapper>
