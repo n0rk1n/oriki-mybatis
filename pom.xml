@@ -13,6 +13,7 @@
         <module>oriki-mybatis-quickstart</module>
         <module>oriki-mybatis-xml</module>
         <module>oriki-mybatis-xml2</module>
+        <module>oriki-mybatis-annotation</module>
     </modules>
 
 
