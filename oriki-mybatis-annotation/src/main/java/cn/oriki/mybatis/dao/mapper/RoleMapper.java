@@ -43,4 +43,24 @@ public interface RoleMapper {
     @Insert(value = "insert into t_role values (null , #{name} , #{enabled} , #{createBy} , now());")
     public Integer saveRole(Role role);
 
+    /**
+     * 保存角色并返回主键
+     *
+     * @param role
+     * @return
+     */
+    @Insert(value = "insert into t_role values (null , #{name} , #{enabled} , #{createBy} , now());")
+    @Options(useGeneratedKeys = true, keyProperty = "id", keyColumn = "id")
+    public Integer saveRoleReturnKey(Role role);
+
+    /**
+     * 保存角色并返回主键
+     *
+     * @param role
+     * @return
+     */
+    @Insert(value = "insert into t_role values (null , #{name} , #{enabled} , #{createBy} , now());")
+    @SelectKey(statement = "select last_insert_id();", keyProperty = "id", keyColumn = "id", before = false, resultType = Integer.class)
+    public Integer saveRoleReturnKeyBySelectKey(Role role);
+
 }
