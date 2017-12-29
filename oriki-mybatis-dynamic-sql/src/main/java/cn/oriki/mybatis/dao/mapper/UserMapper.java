@@ -1,8 +1,10 @@
 package cn.oriki.mybatis.dao.mapper;
 
 import cn.oriki.mybatis.domain.User;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 public interface UserMapper {
     /**
@@ -41,5 +43,29 @@ public interface UserMapper {
      * @return
      */
     public List<User> queryByUsernameOrEmail(User user);
+
+    /**
+     * 根据ids动态查询用户信息
+     *
+     * @param ids
+     * @return
+     */
+    public List<User> queryUsersByIds(@Param(value = "ids") List<Integer> ids);
+
+    /**
+     * 批量添加用户信息
+     *
+     * @param users
+     * @return
+     */
+    public Integer batchInsertUsers(@Param(value = "users") List<User> users);
+
+    /**
+     * 根据map集合更新数据
+     *
+     * @param map
+     * @return
+     */
+    public Integer updatedByMap(@Param(value = "map") Map<String, String> map);
 
 }

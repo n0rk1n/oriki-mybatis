@@ -84,4 +84,46 @@
         </where>
     </select>
 
+    <select id="queryUsersByIds" resultType="cn.oriki.mybatis.domain.User">
+        select
+        id ,
+        username ,
+        password ,
+        email ,
+        info ,
+        img ,
+        create_time
+        from t_user
+        <where>
+            <choose>
+                <when test="ids != null and ids.size() > 0">
+                    id in
+                    <foreach collection="ids" separator="," close=")" open="(" item="id">
+                        #{id}
+                    </foreach>
+                </when>
+                <otherwise>1=2</otherwise>
+            </choose>
+
+        </where>
+    </select>
+
+    <insert id="batchInsertUsers">
+        insert into t_user (username , password , email , info , img , create_time )
+        values
+        <foreach collection="users" separator="," item="user">
+            (#{user.username},#{user.password},#{user.email},#{user.info},#{user.img},now())
+        </foreach>
+    </insert>
+
+    <update id="updatedByMap">
+        update t_user
+        <set>
+            <foreach collection="map" item="value" separator="," index="key">
+                ${key} = #{value}
+            </foreach>
+        </set>
+        where id = #{map.id};
+    </update>
+
 </mapper>
