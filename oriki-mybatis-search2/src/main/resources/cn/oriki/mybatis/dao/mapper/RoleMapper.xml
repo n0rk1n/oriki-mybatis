@@ -3,5 +3,28 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.oriki.mybatis.dao.mapper.RoleMapper">
+    <resultMap id="rolePermissionMap" type="cn.oriki.mybatis.domain.Role">
+        <id column="id" property="id"></id>
+        <result property="name" column="name"></result>
+        <result property="enable" column="enable"></result>
+        <result property="createBy" column="create_by"></result>
+        <result property="createTime" column="create_time"></result>
+
+        <collection property="permissions" select="cn.oriki.mybatis.dao.mapper.PermissionMapper.queryByRoleId"
+                    column="{roleId = id}" fetchType="eager">
+        </collection>
+    </resultMap>
+
+    <select id="queryById" resultMap="rolePermissionMap">
+ select
+   DISTINCT
+   r.id ,
+   r.name ,
+   r.enabled , r.create_by , r.create_time
+ from
+   t_role r inner join t_role_permission rp on r.id = rp.role_id
+ where
+   r.id=#{id};
+</select>
 
 </mapper>
