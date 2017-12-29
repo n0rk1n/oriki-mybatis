@@ -6,6 +6,8 @@ import cn.oriki.mybatis.utils.SqlSessionUtils;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
 
+import java.util.List;
+
 public class MyBatisTest {
 
     @Test
@@ -31,4 +33,20 @@ public class MyBatisTest {
 
         sqlSession.close();
     }
+
+    @Test
+    public void test3() {
+        SqlSession sqlSession = SqlSessionUtils.getSqlSession();
+        RoleMapper roleMapper = sqlSession.getMapper(RoleMapper.class);
+
+        List<Role> roles = roleMapper.queryAll();
+
+        for (Role role : roles) {
+            System.out.println(role);
+        }
+
+        sqlSession.close();
+    }
 }
+
+
