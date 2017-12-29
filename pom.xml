@@ -18,6 +18,7 @@
         <module>oriki-mybatis-generator</module>
         <module>oriki-mybatis-search</module>
         <module>oriki-mybatis-search2</module>
+        <module>oriki-mybatis-cache</module>
     </modules>
 
 
