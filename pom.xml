@@ -15,6 +15,7 @@
         <module>oriki-mybatis-xml2</module>
         <module>oriki-mybatis-annotation</module>
         <module>oriki-mybatis-dynamic-sql</module>
+        <module>oriki-mybatis-generator</module>
     </modules>
 
 
