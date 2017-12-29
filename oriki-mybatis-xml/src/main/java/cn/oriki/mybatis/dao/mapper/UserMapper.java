@@ -2,6 +2,7 @@ package cn.oriki.mybatis.dao.mapper;
 
 import cn.oriki.mybatis.domain.Role;
 import cn.oriki.mybatis.domain.User;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -69,4 +70,13 @@ public interface UserMapper {
      * @return
      */
     public Integer deleteUserById(Integer id);
+
+    /**
+     * 根据用户id和角色状态查询所有可用或者不可用角色信息
+     *
+     * @param userId
+     * @param enable
+     * @return  
+     */
+    public List<Role> queryRolesByUserIdAndRoleEnabled(@Param(value = "userId") Integer userId, @Param(value = "enabled") Integer enable);
 }

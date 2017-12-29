@@ -150,4 +150,18 @@ public class MyBatisTest {
         sqlSession.close();
     }
 
+    @Test
+    public void test9() {
+        SqlSession sqlSession = SqlSessionUtils.getSqlSession();
+        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+
+        List<Role> roles = userMapper.queryRolesByUserIdAndRoleEnabled(1, 1);
+
+        for (Role role : roles) {
+            System.out.println(role);
+        }
+
+        sqlSession.close();
+    }
+
 }
