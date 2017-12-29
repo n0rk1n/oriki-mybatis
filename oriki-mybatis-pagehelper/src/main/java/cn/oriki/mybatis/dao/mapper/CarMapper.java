@@ -2,6 +2,8 @@ package cn.oriki.mybatis.dao.mapper;
 
 import cn.oriki.mybatis.domain.Car;
 
+import java.util.List;
+
 public interface CarMapper {
 
     /**
@@ -11,4 +13,11 @@ public interface CarMapper {
      * @return
      */
     public Integer saveCar(Car car);
+
+    /**
+     * 查询所有汽车信息
+     *
+     * @return
+     */
+    public List<Car> queryAll();
 }

@@ -7,4 +7,8 @@
     <insert id="saveCar">
         insert into t_car values (null , #{name});
     </insert>
+
+    <select id="queryAll" resultType="cn.oriki.mybatis.domain.Car">
+        select id , name from t_car
+    </select>
 </mapper>
