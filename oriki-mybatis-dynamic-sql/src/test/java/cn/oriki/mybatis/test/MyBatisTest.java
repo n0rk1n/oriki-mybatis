@@ -62,4 +62,22 @@ public class MyBatisTest {
         sqlSession.close();
     }
 
+    @Test
+    public void test4() {
+        SqlSession sqlSession = SqlSessionUtils.getSqlSession();
+        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+
+
+        User user = new User();
+        user.setUsername("admi");
+        user.setEmail("admin@oriki.cn");
+
+        List<User> users = userMapper.queryByUsernameOrEmail(user);
+        for (User existUser : users) {
+            System.out.println(existUser);
+        }
+
+        sqlSession.close();
+    }
+
 }

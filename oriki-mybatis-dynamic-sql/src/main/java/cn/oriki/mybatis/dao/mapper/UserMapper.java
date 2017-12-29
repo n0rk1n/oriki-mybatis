@@ -31,4 +31,15 @@ public interface UserMapper {
      */
     public User queryByIdOrUsername(User user);
 
+    /**
+     * 根据用户名和邮箱查找用户
+     * 当只输入用户名时，根据用户名模糊查找
+     * 当只输入邮箱时，根据邮箱精准查找
+     * 既输入用户名又输入邮箱时，使用上述两个条件进行查找
+     *
+     * @param user
+     * @return
+     */
+    public List<User> queryByUsernameOrEmail(User user);
+
 }

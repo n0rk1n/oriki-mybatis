@@ -64,5 +64,24 @@
         ;
     </select>
 
+    <select id="queryByUsernameOrEmail" resultType="cn.oriki.mybatis.domain.User">
+        select
+        id ,
+        username ,
+        password ,
+        email ,
+        info ,
+        img ,
+        create_time
+        from t_user
+        <where>
+            <if test="username !=null and username != '' ">
+                and username like concat("%",#{username},"%")
+            </if>
+            <if test="email != null and email != '' ">
+                and email = #{email}
+            </if>
+        </where>
+    </select>
 
 </mapper>
