@@ -17,6 +17,7 @@
         <module>oriki-mybatis-dynamic-sql</module>
         <module>oriki-mybatis-generator</module>
         <module>oriki-mybatis-search</module>
+        <module>oriki-mybatis-search2</module>
     </modules>
 
 
