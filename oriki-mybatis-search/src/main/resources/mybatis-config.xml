@@ -8,6 +8,10 @@
         <setting name="logImpl" value="LOG4J"/>
         <!-- 开启驼峰匹配规则的配置 -->
         <setting name="mapUnderscoreToCamelCase" value="true"/>
+
+        <!--延迟加载-->
+        <setting name="lazyLoadingEnabled" value="true" />
+        <setting name="aggressiveLazyLoading" value="false" />
     </settings>
     <typeAliases>
         <package name="cn.oriki.mybatis.domain"/>

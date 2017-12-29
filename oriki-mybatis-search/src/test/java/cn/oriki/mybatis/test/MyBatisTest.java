@@ -76,7 +76,7 @@ public class MyBatisTest {
     public void test4() throws IOException {
         InputStream inputStream = Resources.getResourceAsStream("mybatis-config.xml");
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
-		
+
 
         SqlSession sqlSession = sqlSessionFactory.openSession();
 

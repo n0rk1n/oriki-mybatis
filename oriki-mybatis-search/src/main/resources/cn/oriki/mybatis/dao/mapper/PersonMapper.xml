@@ -43,7 +43,7 @@
         <result property="name" column="name"></result>
 
         <association property="identityCard" column="{id = id}"
-                     select="cn.oriki.mybatis.dao.mapper.IdentityCardMapper.queryById"></association>
+                     select="cn.oriki.mybatis.dao.mapper.IdentityCardMapper.queryById" fetchType="lazy"></association>
     </resultMap>
 
     <select id="queryPersonAndIdentityCardInfoByPersonId3" resultMap="personIdentityMap">
