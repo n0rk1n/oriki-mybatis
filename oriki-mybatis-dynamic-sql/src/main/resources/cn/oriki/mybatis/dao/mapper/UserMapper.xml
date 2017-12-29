@@ -76,7 +76,8 @@
         from t_user
         <where>
             <if test="username !=null and username != '' ">
-                and username like concat("%",#{username},"%")
+                <bind name="uncertainUsername" value="'%' + username + '%'"/>
+                  and username like #{uncertainUsername}
             </if>
             <if test="email != null and email != '' ">
                 and email = #{email}
